@@ -2,7 +2,7 @@
 
 @section('content')
     
-     <div id="app"></div>
+     <div><?php echo'voila le groupe'.$groupe ?> </div>
      <script src="{{ asset('js/app.js') }}" ></script>
 
 @endsection

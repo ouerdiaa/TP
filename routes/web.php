@@ -21,9 +21,21 @@ Route::get('/affich', function () {
 Route::get('/bla', function () {
     return view('home');
 });
+Route::get('/abs', function () {
+    return view('etudiant');
+});
+Route::get('/groupes', function () {
+    return view('home');
+});
+Route::get('/groupe/{id_groupe}',function () {
+    return view('home');});
+Route::get('/affichgroupe/{id_groupe}',function($id_groupe) {
+    return Controller.listeetud($id_groupe);});
+
+
+// Route::get('/affichgroupe/{id_groupe}','Controller@listeetud($id_groupe)');
 
 
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');

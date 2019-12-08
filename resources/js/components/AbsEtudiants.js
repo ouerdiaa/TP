@@ -2,28 +2,35 @@ import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import axios from 'axios';
 
-export default class Affich extends Component {
+export default class AbsEtudiant extends Component {
 
     constructor()
     {
         super()
         this.state={
-            etudiants : []
+            absences : [],
+            nom : []
         }
     }
 
 componentDidMount()
 {
 
-    axios.get('api/affich').then(response=> {
-        this.setState({etudiants: response.data.data,})
+    axios.get('api/abs').then(response=> {
+        this.setState({absences: response.data.data,})
     }
         )
+    axios.get('api/nom').then(response=> {
+        this.setState({nom: response.data.data,})
+        }
+    )
 }
 
     render() {
 
-        const etudiants=this.state.etudiants
+        const absences=this.state.absences
+        const nom = this.state.nom
+        console.log(JSON.stringify(nom))
         return (
 
             <div className="container">
@@ -31,10 +38,16 @@ componentDidMount()
                     <div className="col-md-8">
                         <div className="card">
 
-                            <div className="card-header">Etudiants</div>
+                            <div className="card-header">Mes absences 
+                            <div>
+                                {nom.map(nom=>(
+                                    <div  className="card-body">{nom.nometudiant} {nom.prenometudiant} </div>
+                                ))}
+                            </div> 
+                            </div>
 
-                                {etudiants.map(etudiant=>(
-                                    <div key={etudiant.id} className="card-body">{etudiant.nom} {etudiant.prenom}</div>
+                                {absences.map(absence=>(
+                                    <div key={absence.id} className="card-body">{absence.module} {absence.date}</div>
                                 ))}
 
 

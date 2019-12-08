@@ -16,7 +16,7 @@ componentDidMount()
 {
 
     axios.get('api/affich').then(response=> {
-        this.setState({etudiants: response.data.data,})
+        this.setState({etudiants : response.data.data,})
     }
         )
 }

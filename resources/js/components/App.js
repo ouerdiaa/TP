@@ -4,8 +4,9 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom'
 
 import Example from './Example'
 import Affich from './Affich'
-
-
+import AbsEtudiants from './AbsEtudiants'
+import GroupEns from './GroupEns'
+import AffichGroupe from './AffichGroupe'
 
 class App extends Component {
   render () {
@@ -13,8 +14,14 @@ class App extends Component {
       <BrowserRouter>
         <div >
           <Switch>
+            <Route path = '/groupe/:id_groupe' component = {AffichGroupe}/>
             <Route  path='/affich'  component= {Affich}/>
             <Route  path='/bla'  component= {Example}/>
+            <Route path = '/abs' component = {AbsEtudiants}/>
+            <Route path = '/groupes' component = {GroupEns}/>
+            
+            
+
 
           </Switch>
         </div>
@@ -23,6 +30,6 @@ class App extends Component {
   }
 }
 
-if (document.getElementById('affich')) {
-  ReactDOM.render(<App />, document.getElementById('affich'));
+if (document.getElementById('app')) {
+  ReactDOM.render(<App />, document.getElementById('app'));
 }

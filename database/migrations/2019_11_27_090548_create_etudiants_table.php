@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateEnsgroupesTable extends Migration
+class CreateEtudiantsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,15 +13,15 @@ class CreateEnsgroupesTable extends Migration
      */
     public function up()
     {
-        Schema::create('ensgroupes', function (Blueprint $table) {
+        Schema::create('etudiants', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->string('matricule');
+            $table->string('nom');
+            $table->string('prenom');
             $table->integer('anneesc');
             $table->integer('niveau');
-            $table->string('module');
-            $table->integer('idprof');
-            $table->integer('groupe');
-            $table->boolean('cours');
-
+            $table->string('groupe');
+            
 
             $table->timestamps();
         });
@@ -34,6 +34,6 @@ class CreateEnsgroupesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('ensgroupes');
+        Schema::dropIfExists('etudiants');
     }
 }
