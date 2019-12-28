@@ -33,7 +33,7 @@ class Controller extends BaseController
     
     public function getabs()
     {
-        $abs= \DB::table('absences')->where("idetudiant",2)
+        $abs= \DB::table('absences')->where("idetudiant",3)
         ->get();
         return AbsenceResource::collection($abs);
         
@@ -41,13 +41,13 @@ class Controller extends BaseController
     public function getnom()
     {
         //remplacer tous les 2 par session
-        $nom= \DB::table('etudiants')->where("id",2)
+        $nom= \DB::table('etudiants')->where("id",3)
         ->get();
         return NameResource::collection($nom);    
     }
     public function getgroupes()
     {
-        $groupes = \DB::table('ensgroupes')->where("idprof",3)
+        $groupes = \DB::table('ensgroupes')->where("idprof",1)
         ->get();
         return GroupesResource::collection($groupes);    
          
@@ -55,7 +55,7 @@ class Controller extends BaseController
     public function getnomprof()
     {
         //remplacer tous les 2 par session
-        $nom= \DB::table('enseignants')->where("id",3)
+        $nom= \DB::table('enseignants')->where("id",1)
         ->get();
         return NomEnseignantResource::collection($nom);    
     }

@@ -15,6 +15,8 @@ class App extends Component {
         <div >
           <Switch>
             <Route path = '/groupe/:id_groupe' component = {AffichGroupe}/>
+            <Route path = '/affichgroupe/:id_groupe' component = {AffichGroupe}/>
+            {/* <Route path = '/:id_groupe' component = {AffichGroupe}/> */}
             <Route  path='/affich'  component= {Affich}/>
             <Route  path='/bla'  component= {Example}/>
             <Route path = '/abs' component = {AbsEtudiants}/>

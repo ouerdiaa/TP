@@ -29,8 +29,11 @@ Route::get('/groupes', function () {
 });
 Route::get('/groupe/{id_groupe}',function () {
     return view('home');});
-Route::get('/affichgroupe/{id_groupe}',function($id_groupe) {
-    return Controller.listeetud($id_groupe);});
+ Route::get('/affichgroupe/{id_groupe}',function () {
+    return view('home');});
+
+// Route::get('/affichgroupe/{id_groupe}',function($id_groupe) {
+//     return Controller.listeetud($id_groupe);});
 
 
 // Route::get('/affichgroupe/{id_groupe}','Controller@listeetud($id_groupe)');

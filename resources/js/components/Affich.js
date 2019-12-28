@@ -45,5 +45,8 @@ componentDidMount()
         );
     }
 }
+if (document.getElementById('affich')) {
+    ReactDOM.render(<Affich />, document.getElementById('affich'));
+}
 
 

@@ -1,8 +1,8 @@
 @extends('layouts.appp')
 
 @section('content')
-    
-     <div><?php echo'voila le groupe'.$groupe ?> </div>
+     <div>bla</div>
+     <div id="affich"></div>
      <script src="{{ asset('js/app.js') }}" ></script>
 
 @endsection

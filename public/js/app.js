@@ -73086,6 +73086,10 @@ function (_Component) {
 
 
 
+if (document.getElementById('affich')) {
+  react_dom__WEBPACK_IMPORTED_MODULE_1___default.a.render(react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(Affich, null), document.getElementById('affich'));
+}
+
 /***/ }),
 
 /***/ "./resources/js/components/AffichGroupe.js":
@@ -73149,32 +73153,24 @@ function (_Component) {
   _createClass(AffichGroupe, [{
     key: "componentDidMount",
     value: function componentDidMount() {
-      var id_groupe = this.props.match.params.id_groupe;
-      this.groupe = id_groupe;
-      console.log("on mount"); // axios.get(`api/affichgroupe/${id_groupe}`).then(response=> 
-      // {
-      //     this.setState({
-      //         etudiants : response.data.data,
-      //         })
-      // })
-    }
-  }, {
-    key: "render",
-    value: function render() {
       var _this2 = this;
 
+      this._isMounted = true;
+      console.log('on mount');
       var id_groupe = this.props.match.params.id_groupe;
-      axios__WEBPACK_IMPORTED_MODULE_2___default.a.get("api/affichgroupe/".concat(id_groupe)).then(function (response) {
+      axios__WEBPACK_IMPORTED_MODULE_2___default.a.get("/api/affichgroupe/".concat(id_groupe)).then(function (response) {
         _this2.setState({
           etudiants: response.data.data
         });
       });
-      console.log('on a fait la requete');
-
-      if (etudiants == null) {
-        console.log('bah c\'est null');
-      }
-
+      console.log(id_groupe);
+      console.log('on essaye'); // etudiants.map(etudiant=>(
+      //     console.log(etudiant.id)
+      // ))
+    }
+  }, {
+    key: "render",
+    value: function render() {
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "container"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -73260,6 +73256,9 @@ function (_Component) {
         path: "/groupe/:id_groupe",
         component: _AffichGroupe__WEBPACK_IMPORTED_MODULE_7__["default"]
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Route"], {
+        path: "/affichgroupe/:id_groupe",
+        component: _AffichGroupe__WEBPACK_IMPORTED_MODULE_7__["default"]
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Route"], {
         path: "/affich",
         component: _Affich__WEBPACK_IMPORTED_MODULE_4__["default"]
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Route"], {
@@ -73325,32 +73324,14 @@ function (_Component) {
   _inherits(Example, _Component);
 
   function Example() {
-    var _this;
-
     _classCallCheck(this, Example);
 
-    _this = _possibleConstructorReturn(this, _getPrototypeOf(Example).call(this));
-    _this.state = {
-      etudiants: []
-    };
-    return _this;
+    return _possibleConstructorReturn(this, _getPrototypeOf(Example).apply(this, arguments));
   }
 
   _createClass(Example, [{
-    key: "componentDidMount",
-    value: function componentDidMount() {
-      var _this2 = this;
-
-      axios.get('api/affich').then(function (response) {
-        _this2.setState({
-          etudiants: response.data.data
-        });
-      });
-    }
-  }, {
     key: "render",
     value: function render() {
-      var etudiants = this.state.etudiants;
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "container"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -73361,12 +73342,7 @@ function (_Component) {
         className: "card"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "card-header"
-      }, "Example Component"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, etudiants.map(function (etudiant) {
-        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-          key: etudiant.id,
-          className: "card-body"
-        }, etudiant.nom, " ", etudiant.prenom);
-      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, "Example Component"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "card-body"
       }, "I'm an example component!")))));
     }
@@ -73514,8 +73490,8 @@ if (document.getElementById('groupeens')) {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\xampp\htdocs\laravel2311\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\xampp\htdocs\laravel2311\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\xampp\htdocs\24122019\TP\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\xampp\htdocs\24122019\TP\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })
