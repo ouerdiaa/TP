@@ -18,7 +18,7 @@
 import React from "react";
 import ReactDOM from "react-dom";
 
-import { BrowserRouter, Route, Switch, Redirect } from "react-router-dom";
+import { BrowserRouter, Route, Switch, Redirect, Link } from "react-router-dom";
 
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./assets/css/animate.min.css";
@@ -29,10 +29,12 @@ import "./assets/css/pe-icon-7-stroke.css";
 import TableAbsEtud from "components/Tables/TableAbsEtud.jsx";
 import TableGroupeEns from "components/Tables/TableGroupeEns.jsx";
 import ListeEtudiants from "components/Tables/ListeEtudiants.jsx";
+import Login from "components/Authentification/Login";
 
 ReactDOM.render(
   <BrowserRouter>
     <Switch>
+         <Route path="/" exact component={Login} />
         <Route path="/mesabsences" exact component={TableAbsEtud} />
         <Route path="/mesgroupes" exact component={TableGroupeEns} />
         <Route path="/mesgroupes/:id_groupe" exact component={ListeEtudiants} />
