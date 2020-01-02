@@ -21,12 +21,12 @@ export default class Login extends Component {
 
                 <div className="form-group">
                     <label>Adresse E-mail</label>
-                    <input type="email" className="form-control" placeholder="E-mail" />
+                    <input id="mail" type="email" className="form-control" placeholder="E-mail" />
                 </div>
 
                 <div className="form-group">
                     <label>Mot de passe</label>
-                    <input type="password" className="form-control" placeholder="Mot de passe" />
+                    <input id="mdp" type="password" className="form-control" placeholder="Mot de passe" />
                 </div>
 
                 <div className="form-group">
@@ -35,7 +35,7 @@ export default class Login extends Component {
                         <label className="custom-control-label" htmlFor="customCheck1">Se souvenir de moi</label>
                     </div>
                 </div>
-                <a href="/mesabsences" class="btn btn-primary btn-block" role="button">Se connecter</a>
+                <a id="se-connecter" href="/mesabsences" class="btn btn-primary btn-block" role="button">Se connecter</a>
                 <p className="forgot-password text-right">
                     Mot de passe <a href="#">oublié?</a>
                 </p>
