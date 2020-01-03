@@ -10,6 +10,7 @@ use App\Http\Resources\AbsenceResource;
 use App\Http\Resources\NameResource;
 use App\Http\Resources\GroupesResource;
 use App\Http\Resources\NomEnseignantResource;
+use App\Http\Resources\CompteResource;
 
 class Controller extends BaseController
 {
@@ -27,35 +28,51 @@ class Controller extends BaseController
         ->get() ;
         return EtudiantResource::collection($etud);
     }
+    public function getcompte($email,$mdp)
+    {
+        $etud = \DB::table('comptes')->where("login",$email)->where("mp",$mdp)
+        ->get()->first() ;
+        
+
+        return [
+            "privilege" => $etud->privilege,
+            "iduser" => $etud->iduser,
+            "id" => $etud->id ,
+            "email"=>$etud->login,
+
+        ];    
+    }
+
 
    
     
     
-    public function getabs()
+    
+    public function getabsences($id_etud)
     {
-        $abs= \DB::table('absences')->where("idetudiant",3)
+        $abs= \DB::table('absences')->where("idetudiant",$id_etud)
         ->get();
         return AbsenceResource::collection($abs);
         
     }
-    public function getnom()
+    public function getnom($id_etud)
     {
         //remplacer tous les 2 par session
-        $nom= \DB::table('etudiants')->where("id",3)
+        $nom= \DB::table('etudiants')->where("id",$id_etud)
         ->get();
         return NameResource::collection($nom);    
     }
-    public function getgroupes()
+    public function getgroupes($id_prof)
     {
-        $groupes = \DB::table('ensgroupes')->where("idprof",1)
+        $groupes = \DB::table('ensgroupes')->where("idprof",$id_prof)
         ->get();
         return GroupesResource::collection($groupes);    
          
     }
-    public function getnomprof()
+    public function getnomprof($id_prof)
     {
         //remplacer tous les 2 par session
-        $nom= \DB::table('enseignants')->where("id",1)
+        $nom= \DB::table('enseignants')->where("id",$id_prof)
         ->get();
         return NomEnseignantResource::collection($nom);    
     }

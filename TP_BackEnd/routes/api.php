@@ -13,16 +13,17 @@ use Illuminate\Http\Request;
 |
 */
 
+
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 Route::post('/vue','TestVueController@index');
-
-Route::get('/abs','Controller@getabs');
+Route::get('/absences/{id_etud}','Controller@getabsences');
 Route::get('/affichgroupe/{id_groupe}','Controller@listeetud');
-Route::get('/nom','Controller@getnom');
-Route::get('/groupes','Controller@getgroupes');
-Route::get('/nomprof','Controller@getnomprof');
+Route::get('/nom/{id_etud}','Controller@getnom');
+Route::get('/groupes/{id_prof}','Controller@getgroupes');
+Route::get('/nomprof/{id_prof}','Controller@getnomprof');
+Route::get('/getcompte/{email}/{mdp}','Controller@getcompte');
 
 
 
