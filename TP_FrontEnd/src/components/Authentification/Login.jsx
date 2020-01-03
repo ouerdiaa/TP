@@ -87,18 +87,18 @@ export default class Login extends Component {
           <h3 >Se connecter</h3> 
             <div className="form-group">
                 <label>Adresse E-mail</label>
-                <input type="email" className="form-control" name = "email" placeholder="E-mail" value={this.state.email} 
+                <input id="mail" type="email" className="form-control" name = "email" placeholder="E-mail" value={this.state.email} 
                 onChange={event => this.handleChangeemail(event)}/>
             </div> 
                  <div className="form-group">
                      <label>Mot de passe</label>
-                     <input type="password" className="form-control" name = "mdp" placeholder="Mot de passe" value={this.state.mdp}
+                     <input id="mdp" type="password" className="form-control" name = "mdp" placeholder="Mot de passe" value={this.state.mdp}
                      onChange={event => this.handleChangemdp(event)} />
                  </div>
 
 
              
-            <button onClick={event => this.handleSubmitForm(event)} class="btn btn-primary btn-block">connexion</button>   
+            <button id="se-connecter" onClick={event => this.handleSubmitForm(event)} class="btn btn-primary btn-block">connexion</button>   
           </form>
           </div>
           </div>
