@@ -104,15 +104,17 @@ class TableAbsEtud extends Component {
     componentDidMount()
 {
 
-    axios.get('http://127.0.0.1:8000/api/abs').then(response=> {
+    const iduser = localStorage.getItem('iduser')
+
+    
+    axios.get(`http://127.0.0.1:8000/api/absences/${iduser}`).then(response=> {
         this.setState({absences: response.data.data,})
     }
         )
-    axios.get('http://127.0.0.1:8000/api/nom').then(response=> {
+    axios.get(`http://127.0.0.1:8000/api/nom/${iduser}`).then(response=> {
         this.setState({nom: response.data.data,})
         })
-    console.log('le nom')
-    console.log(this.nom)
+        
 }
    
     componentDidUpdate(e) {
@@ -130,8 +132,10 @@ class TableAbsEtud extends Component {
       }
     }
   render() {
+    
     const absences=this.state.absences
     const nom = this.state.nom
+    
     return (
       <div className="wrapper">
     <SidebarEtud {...this.props} routes={routes} image={this.state.image}

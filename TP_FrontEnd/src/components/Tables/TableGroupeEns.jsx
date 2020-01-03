@@ -24,11 +24,12 @@ import routes from "routesEns.js";
 import SidebarEns from "components/SidebarEns/SidebarEns.jsx";
 import image from "assets/img/sidebar-3.jpg";
 import { Link } from 'react-router-dom';
-import './TableList.css' ;
+import './TableList.css';
+import axios from 'axios';
 
 class TableGroupEns extends Component {
   constructor(props)
-    {
+  {
         super(props)
         this.state={
           _notificationSystem: null,
@@ -36,14 +37,15 @@ class TableGroupEns extends Component {
           color: "black",
           hasImage: false,
           fixedClasses: "dropdown show-dropdown open",
-          groupes : [{
-            niveau: 1,
-            groupe: 1
-          },
-          {
-          niveau: 1,
-            groupe: 2
-          }
+          groupes : [
+          //   {
+          //   niveau: 1,
+          //   groupe: 1
+          // },
+          // {
+          // niveau: 1,
+          //   groupe: 2
+          // }
         ],
           nomens :[]
         }
@@ -97,7 +99,19 @@ class TableGroupEns extends Component {
         this.setState({ fixedClasses: "dropdown" });
       }
     };
-   
+    
+    componentDidMount()
+    {
+        const iduser = localStorage.getItem('iduser')
+        axios.get(`http://127.0.0.1:8000/api/groupes/${iduser}`).then(response=> {
+            this.setState({groupes : response.data.data,})
+        })
+        axios.get(`http://127.0.0.1:8000/api/nomprof/${iduser}`).then(response=> {
+            this.setState({nomens: response.data.data,})
+            })
+         
+        
+    }
     componentDidUpdate(e) {
       if (
         window.innerWidth < 993 &&
@@ -114,7 +128,6 @@ class TableGroupEns extends Component {
     }
   render() {
     const groupes=this.state.groupes
-    
     const nomens = this.state.nomens
     return (
       <div className="wrapper">
