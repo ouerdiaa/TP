@@ -24,6 +24,7 @@ import routes from "routesEns.js";
 import SidebarEns from "components/SidebarEns/SidebarEns.jsx";
 import image from "assets/img/sidebar-3.jpg";
 import { Link } from 'react-router-dom';
+import axios from 'axios';
 
 class TableGroupEns extends Component {
   constructor(props)
@@ -36,23 +37,7 @@ class TableGroupEns extends Component {
           hasImage: false,
           fixedClasses: "dropdown show-dropdown open",
           etudiants : [
-              {
-                  nom: "Hamdine",
-                  prenom: "Israa",
-                  matricule: 1
-              },
-              {
-                nom: "Khouas",
-                prenom: "Ouerdia",
-                matricule: 2
-            },
-            {
-                nom: "Khouas",
-                prenom: "Ouerdia",
-                matricule: 2
-            }
-             
-
+            
           ],
           groupe : {},
         }
@@ -75,6 +60,7 @@ class TableGroupEns extends Component {
           );
         } else {
           return null;
+
         }
       });
     };
@@ -106,6 +92,16 @@ class TableGroupEns extends Component {
         this.setState({ fixedClasses: "dropdown" });
       }
     };
+    componentDidMount()
+    {   
+        this._isMounted = true 
+            const id_groupe = this.props.match.params.id_groupe
+            axios.get(`http://127.0.0.1:8000/api/affichgroupe/${id_groupe}`).then(response=> {
+                this.setState({etudiants : response.data.data,})
+                })
+          
+    }
+
    
     componentDidUpdate(e) {
       if (
