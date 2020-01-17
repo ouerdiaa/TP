@@ -31,6 +31,10 @@ class TableAbsEtud extends Component {
   constructor(props)
     {
         super(props)
+        if(localStorage.getItem('connecte_etud')!=1)
+        {
+          window.location.href = "/"
+        }
         this.state={
           _notificationSystem: null,
           image: image,

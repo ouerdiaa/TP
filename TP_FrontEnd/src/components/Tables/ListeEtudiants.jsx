@@ -14,6 +14,10 @@ class TableGroupEns extends Component {
   constructor(props)
     {
         super(props)
+        if(localStorage.getItem('connecte_ens')!=1)
+        {
+          window.location.href = "/"
+        }
         this.state={
           _notificationSystem: null,
           image: image,
@@ -102,6 +106,10 @@ class TableGroupEns extends Component {
       }
     }
   render() {
+    if(localStorage.getItem('connecte_ens')!=1)
+      {
+        window.location.href = "/"
+      }
     const etudiants=this.state.etudiants
     const id_groupe = this.props.match.params.id_groupe
     return (

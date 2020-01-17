@@ -15,7 +15,8 @@ export default class Login extends Component {
           pr:"",
           iduser:"",
         };
-        localStorage.clear()
+        // localStorage.clear()
+        
         
       }
       handleChange(event) {
@@ -45,6 +46,10 @@ export default class Login extends Component {
         event.preventDefault()
         const email = this.state.email
         const mdp = this.state.mdp
+        localStorage.setItem('connecte_etud',0)
+        localStorage.setItem('connecte_ens',0)
+        console.log('connecte_ens')
+        console.log(localStorage.getItem('connecte_ens'))
         axios.get(`http://127.0.0.1:8000/api/getcompte/${email}/${mdp}`).then(
           response=> {
           localStorage.clear()
@@ -52,11 +57,12 @@ export default class Login extends Component {
           localStorage.setItem('pr',response.data.privilege)
           if(localStorage.getItem('pr')=='0')
           {
-
+            localStorage.setItem('connecte_etud',1)
             window.location.href = "/mesabsences"
           }
           else
           {
+            localStorage.setItem('connecte_ens',1)
             window.location.href = "/mesgroupes"
           }
           })

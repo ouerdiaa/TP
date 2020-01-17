@@ -21,6 +21,11 @@ class SidebarEtud extends Component {
     this.updateDimensions();
     window.addEventListener("resize", this.updateDimensions.bind(this));
   }
+  handledeconnexion()
+  {
+    localStorage.clear()
+    window.location.href = "/"
+  }
   render() {
     const sidebarBackground = {
       backgroundImage: "url(" + this.props.image + ")"
@@ -104,6 +109,7 @@ class SidebarEtud extends Component {
                       <i className="pe-7s-folder"></i>
                       <p>Mes notes</p>
                     </NavLink>
+                    <button id="se-deconnecter" onClick={event => this.handledeconnexion(event)} class="btn btn-primary btn-block">déconnexion</button>
                     
           </ul>
         </div>

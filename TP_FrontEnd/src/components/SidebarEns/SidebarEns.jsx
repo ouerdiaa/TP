@@ -14,6 +14,13 @@ class SidebarEns extends Component {
   activeRoute(routeName) {
     return this.props.location.pathname.indexOf(routeName) > -1 ? "active" : "";
   }
+
+  handledeconnexion()
+  {
+    localStorage.clear()
+    window.location.href = "/"
+  }
+
   updateDimensions() {
     this.setState({ width: window.innerWidth });
   }
@@ -81,6 +88,7 @@ class SidebarEns extends Component {
                       <i className="pe-7s-user"></i>
                       <p>Mon profil</p>
                     </NavLink>
+                    <button id="se-deconnecter" onClick={event => this.handledeconnexion(event)} class="btn btn-primary btn-block">déconnexion</button>
                     
           </ul>
         </div>

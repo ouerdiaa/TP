@@ -27,10 +27,17 @@ import { Link } from 'react-router-dom';
 import './TableList.css';
 import axios from 'axios';
 
+
 class TableGroupEns extends Component {
   constructor(props)
   {
         super(props)
+        if(localStorage.getItem('connecte_ens')!=1)
+      {
+        window.location.href = "/"
+      }
+
+
         this.state={
           _notificationSystem: null,
           image: image,
@@ -102,6 +109,7 @@ class TableGroupEns extends Component {
     
     componentDidMount()
     {
+      
         const iduser = localStorage.getItem('iduser')
         axios.get(`http://127.0.0.1:8000/api/groupes/${iduser}`).then(response=> {
             this.setState({groupes : response.data.data,})
@@ -129,6 +137,12 @@ class TableGroupEns extends Component {
   render() {
     const groupes=this.state.groupes
     const nomens = this.state.nomens
+    console.log('connecte_ens')
+    console.log(localStorage.getItem('connecte_ens'))
+    if(localStorage.getItem('connecte_ens')!=1)
+      {
+        window.location.href = "/"
+      }
     return (
       <div className="wrapper">
     <SidebarEns {...this.props} routes={routes} image={this.state.image}
